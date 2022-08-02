@@ -7,8 +7,8 @@ from odoo import models, fields, api
 
 class HospitalPatient(models.Model):
     """A class used to represent a Patient"""
-    _name = 'hr.hospital.patient'
-    _inherit = ['hr.hospital.person.mixin', ]
+    _name = 'hr_hospital.patient'
+    _inherit = ['hr_hospital.person.mixin', ]
     _description = "Hospital patient"
 
     name = fields.Char('Name', index=True, required=True)
@@ -24,9 +24,9 @@ class HospitalPatient(models.Model):
     passport_issued = fields.Date('Passport issued', )
     passport_issued_by = fields.Char('Passport issued by', )
 
-    contact_person_id = fields.Many2one('hr.hospital.contact.person',
+    contact_person_id = fields.Many2one('hr_hospital.contact.person',
                                         string='Contact person')
-    personal_doctor_id = fields.Many2one('hr.hospital.doctor', string='Personal doctor', )
+    personal_doctor_id = fields.Many2one('hr_hospital.doctor', string='Personal doctor', )
     description = fields.Text(string='Description')
 
     @api.depends('date_of_birth')
@@ -40,7 +40,7 @@ class HospitalPatient(models.Model):
     def create(self, vals):
         new_record = super().create(vals)
         if 'personal_doctor_id' in vals:
-            self.env['hr.hospital.personal.doctor.history'].create({
+            self.env['hr_hospital.personal.doctor.history'].create({
                 'doctor_id': vals['personal_doctor_id'],
                 'patient_id': new_record.id,
                 'appointment_date': date.today(), })
@@ -51,7 +51,7 @@ class HospitalPatient(models.Model):
             return super().write(vals)
         for obj in self:
             if obj.personal_doctor_id.id != vals.get('personal_doctor_id'):
-                self.env['hr.hospital.personal.doctor.history'].create({
+                self.env['hr_hospital.personal.doctor.history'].create({
                     'doctor_id': vals.get('personal_doctor_id'),
                     'patient_id': obj.id, 'appointment_date': date.today(), })
             val = vals.deepcopy()

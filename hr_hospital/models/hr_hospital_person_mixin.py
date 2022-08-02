@@ -2,7 +2,7 @@ from odoo import _, fields, models
 
 
 class PersonMixin(models.AbstractModel):
-    _name = 'hr.hospital.person.mixin'
+    _name = 'hr_hospital.person.mixin'
     _description = 'Person mixin'
 
     active = fields.Boolean(default=True)

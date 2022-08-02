@@ -2,7 +2,7 @@
 <odoo>
     <record id="sample_type_view_tree" model="ir.ui.view">
         <field name="name">sample.type.view.tree</field>
-        <field name="model">hr.hospital.sample.type</field>
+        <field name="model">hr_hospital.sample.type</field>
         <field name="arch" type="xml">
             <tree string="Types of sample">
                 <field name="name"/>
@@ -11,7 +11,7 @@
     </record>
     <record id="sample_type_view_form" model="ir.ui.view">
         <field name="name">sample.type.view.form</field>
-        <field name="model">hr.hospital.sample.type</field>
+        <field name="model">hr_hospital.sample.type</field>
         <field name="arch" type="xml">
             <form string="Type of sample">
                 <sheet>
@@ -29,7 +29,7 @@
     </record>
     <record id="sample_type_action" model="ir.actions.act_window">
         <field name="name">Sample type</field>
-        <field name="res_model">hr.hospital.sample.type</field>
+        <field name="res_model">hr_hospital.sample.type</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>

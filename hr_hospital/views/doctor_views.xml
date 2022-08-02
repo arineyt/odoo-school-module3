@@ -2,7 +2,7 @@
 <odoo>
     <record id="doctor_view_tree" model="ir.ui.view">
         <field name="name">doctor.view.tree</field>
-        <field name="model">hr.hospital.doctor</field>
+        <field name="model">hr_hospital.doctor</field>
         <field name="arch" type="xml">
             <tree string="Doctors">
                 <field name="last_name"/>
@@ -16,7 +16,7 @@
     </record>
     <record id="doctor_view_form" model="ir.ui.view">
         <field name="name">doctor.view.form</field>
-        <field name="model">hr.hospital.doctor</field>
+        <field name="model">hr_hospital.doctor</field>
         <field name="arch" type="xml">
             <form string="Doctor">
                 <sheet>
@@ -40,7 +40,7 @@
     </record>
     <record id="doctor_action" model="ir.actions.act_window">
         <field name="name">Doctors</field>
-        <field name="res_model">hr.hospital.doctor</field>
+        <field name="res_model">hr_hospital.doctor</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>

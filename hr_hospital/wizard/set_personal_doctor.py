@@ -5,9 +5,9 @@ class SetPersonalDoctor(models.TransientModel):
     _name = "set.personal.doctor.wizard"
     _description = "Set personal doctor"
 
-    doctor_id = fields.Many2one("hr.hospital.doctor", string="New personal doctor",
+    doctor_id = fields.Many2one("hr_hospital.doctor", string="New personal doctor",
                                 required=True, )
-    patient_ids = fields.Many2many('hr.hospital.patient')
+    patient_ids = fields.Many2many('hr_hospital.patient')
 
     def default_get(self, fields_list):
         res = super().default_get(fields_list)
