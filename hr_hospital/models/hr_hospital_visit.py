@@ -9,8 +9,8 @@ class Visit(models.Model):
                                 index=True, required=True)
     patient_id = fields.Many2one('hr_hospital.patient', string='Patient',
                                  index=True, required=True)
-    date_of_visit = fields.Date('Date of visit', required=True)
-    time_reception = fields.Integer('Time reception')
+    date_of_visit = fields.Date(required=True)
+    time_reception = fields.Integer()
     study_ids = fields.Many2many('hr_hospital.patient.study', string='Studies')
     diagnosis_id = fields.Many2one('hr_hospital.diagnosis', string='Diagnosis')
-    recommendation = fields.Text('Recommendation', required=True)
+    recommendation = fields.Text(required=True)

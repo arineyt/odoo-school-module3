@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from odoo import models, fields
 
 
@@ -15,7 +14,7 @@ class HospitalDiagnosis(models.Model):
                                  index=True, required=True)
     disease_id = fields.Many2one('hr_hospital.disease', string='Disease',
                                  index=True, required=True)
-    date_of_diagnosis = fields.Date('Date of diagnosis')
+    date_of_diagnosis = fields.Date()
     study_ids = fields.Many2many('hr_hospital.patient.study', string='Studies')
-    prescribed_treatment = fields.Text(string='Prescribed treatment')
-    comments_of_mentor = fields.Text('Comments of mentor', required=False)
+    prescribed_treatment = fields.Text()
+    comments_of_mentor = fields.Text(required=False)

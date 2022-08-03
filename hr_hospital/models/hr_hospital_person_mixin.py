@@ -6,19 +6,17 @@ class PersonMixin(models.AbstractModel):
     _description = 'Person mixin'
 
     active = fields.Boolean(default=True)
-    first_name = fields.Char(string='First Name',
-                             required=True)
-    last_name = fields.Char(string='Last Name',
-                            required=True)
-    middle_name = fields.Char(string='Middle Name')
+    first_name = fields.Char(required=True)
+    last_name = fields.Char(required=True)
+    middle_name = fields.Char()
     gender = fields.Selection(
         default='other',
         selection=[('male', _('Male')),
                    ('female', _('Female')),
                    ('other', _('Other / Undefined'))], )
-    phone = fields.Char(string='Phone')
-    email = fields.Char(string='Email')
-    photo = fields.Image(string="Photo", max_width=512, max_height=512)
+    phone = fields.Char()
+    email = fields.Char()
+    photo = fields.Image(max_width=512, max_height=512)
 
     def name_get(self):
         res = []

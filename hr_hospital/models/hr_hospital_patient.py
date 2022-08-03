@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from datetime import date
 
 from dateutil.relativedelta import relativedelta
@@ -11,23 +10,21 @@ class HospitalPatient(models.Model):
     _inherit = ['hr_hospital.person.mixin', ]
     _description = "Hospital patient"
 
-    name = fields.Char('Name', index=True, required=True)
-    date_of_birth = fields.Date(string='Date of birth', required=True)
-    age = fields.Integer(string='Age',
-                         compute='_compute_age',
-                         compute_sudo=True, store=True)
+    name = fields.Char(index=True, required=True)
+    date_of_birth = fields.Date(required=True)
+    age = fields.Integer(compute='_compute_age', compute_sudo=True, store=True)
 
-    gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string='Gender')
+    gender = fields.Selection([('male', 'Male'), ('female', 'Female')])
 
-    passport_series = fields.Char('Passport series', size=2, )
-    passport_number = fields.Char('Passport number', size=6, )
-    passport_issued = fields.Date('Passport issued', )
-    passport_issued_by = fields.Char('Passport issued by', )
+    passport_series = fields.Char(size=2, )
+    passport_number = fields.Char(size=6, )
+    passport_issued = fields.Date()
+    passport_issued_by = fields.Char()
 
     contact_person_id = fields.Many2one('hr_hospital.contact.person',
                                         string='Contact person')
     personal_doctor_id = fields.Many2one('hr_hospital.doctor', string='Personal doctor', )
-    description = fields.Text(string='Description')
+    description = fields.Text()
 
     @api.depends('date_of_birth')
     def _compute_age(self):
@@ -59,4 +56,3 @@ class HospitalPatient(models.Model):
                 val['passport_number'] = '1111 {}'.format(obj.passport_series)
             super('Patient', obj).write(val)
         return True
-
