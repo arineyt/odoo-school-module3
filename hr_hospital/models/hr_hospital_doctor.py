@@ -7,7 +7,6 @@ class HospitalDoctor(models.Model):
     _inherit = ['hr_hospital.person.mixin', ]
     _description = "Hospital doctor"
 
-    name = fields.Char(index=True, required=True)
     specialty = fields.Char('specialty', required=True)
     is_intern = fields.Boolean()
     mentor_id = fields.Many2one('hr_hospital.doctor', string='Mentor',

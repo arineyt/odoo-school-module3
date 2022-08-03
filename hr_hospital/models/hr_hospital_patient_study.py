@@ -12,6 +12,7 @@ class PatientStudy(models.Model):
                                 index=True, required=True)
     study_id = fields.Many2one('hr_hospital.study.type', string='Study',
                                index=True, required=True)
-    sample_id = fields.Many2one('hr_hospital.sample.type', string='Sample type',
+    sample_id = fields.Many2one('hr_hospital.sample.type',
+                                string='Sample type',
                                 index=True, required=True)
     conclusion = fields.Text(required=True)

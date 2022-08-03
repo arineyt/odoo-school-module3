@@ -10,11 +10,10 @@ class HospitalPatient(models.Model):
     _inherit = ['hr_hospital.person.mixin', ]
     _description = "Hospital patient"
 
-    name = fields.Char(index=True, required=True)
     date_of_birth = fields.Date(required=True)
     age = fields.Integer(compute='_compute_age', compute_sudo=True, store=True)
 
-    gender = fields.Selection([('male', 'Male'), ('female', 'Female')])
+    gender = fields.Selection([('male', 'Male'), ('female', 'Female')],)
 
     passport_series = fields.Char(size=2, )
     passport_number = fields.Char(size=6, )
@@ -23,7 +22,8 @@ class HospitalPatient(models.Model):
 
     contact_person_id = fields.Many2one('hr_hospital.contact.person',
                                         string='Contact person')
-    personal_doctor_id = fields.Many2one('hr_hospital.doctor', string='Personal doctor', )
+    personal_doctor_id = fields.Many2one('hr_hospital.doctor',
+                                         string='Personal doctor', required=True)
     description = fields.Text()
 
     @api.depends('date_of_birth')

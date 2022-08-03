@@ -10,10 +10,9 @@ class PersonMixin(models.AbstractModel):
     last_name = fields.Char(required=True)
     middle_name = fields.Char()
     gender = fields.Selection(
-        default='other',
+        default='male',
         selection=[('male', _('Male')),
-                   ('female', _('Female')),
-                   ('other', _('Other / Undefined'))], )
+                   ('female', _('Female'))], )
     phone = fields.Char()
     email = fields.Char()
     photo = fields.Image(max_width=512, max_height=512)

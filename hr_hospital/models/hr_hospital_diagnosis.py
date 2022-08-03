@@ -9,7 +9,7 @@ class HospitalDiagnosis(models.Model):
     name = fields.Char(index=True, required=True)
     active = fields.Boolean(default=True)
     doctor_id = fields.Many2one('hr_hospital.doctor', string='Doctor',
-                                 index=True, required=True)
+                                index=True, required=True)
     patient_id = fields.Many2one('hr_hospital.patient', string='Patient',
                                  index=True, required=True)
     disease_id = fields.Many2one('hr_hospital.disease', string='Disease',
